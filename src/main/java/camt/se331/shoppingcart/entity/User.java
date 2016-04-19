@@ -74,4 +74,12 @@ public class User {
     public void setDob(Date dob) {
         this.dob = dob;
     }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 }

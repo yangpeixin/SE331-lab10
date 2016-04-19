@@ -1,5 +1,6 @@
 package camt.se331.shoppingcart.config.security;
 
+
 import camt.se331.shoppingcart.entity.User;
 import camt.se331.shoppingcart.service.UserServiceImpl;
 

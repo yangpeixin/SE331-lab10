@@ -1,14 +1,13 @@
 package camt.se331.shoppingcart.config.security;
 
 import camt.se331.shoppingcart.entity.Role;
-import org.hsqldb.lib.Collection;
-
-
+import camt.se331.shoppingcart.entity.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Set;
 
 /**
