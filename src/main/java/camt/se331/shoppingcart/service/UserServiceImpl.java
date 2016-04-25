@@ -1,6 +1,7 @@
 package camt.se331.shoppingcart.service;
 
 
+import camt.se331.shoppingcart.entity.User;
 import camt.se331.shoppingcart.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,12 +19,12 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
-    public List<org.hsqldb.rights.User> findAll() {
+    public List<User> findAll() {
         return userRepository.findAll();
     }
 
     @Override
-    public org.hsqldb.rights.User findByUserName(String username) {
+    public User findByUserName(String username) {
         return userRepository.findByUsername(username);
     }
 }

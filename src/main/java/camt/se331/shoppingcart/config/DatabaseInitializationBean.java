@@ -54,7 +54,7 @@ public class DatabaseInitializationBean implements InitializingBean {
         shoppingCartRepository.save(shoppingCart);
     }
 
-    Role adminRole = new Role("admin");
+    /*Role adminRole = new Role("admin");
     Role userRole = new Role("user");
 
     User admin = new User();
@@ -77,5 +77,5 @@ public class DatabaseInitializationBean implements InitializingBean {
     userRepository.save(admin);
     userRepository.save(user);
     admin.setRoles(roles);
-    user.setRoles(roles2);
+    user.setRoles(roles2);*/
 }

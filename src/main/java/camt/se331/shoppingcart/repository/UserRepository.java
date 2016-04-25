@@ -1,6 +1,7 @@
 package camt.se331.shoppingcart.repository;
 
-import org.hsqldb.rights.User;
+;
+import camt.se331.shoppingcart.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
