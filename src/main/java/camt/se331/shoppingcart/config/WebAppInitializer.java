@@ -40,7 +40,8 @@ public class WebAppInitializer implements WebApplicationInitializer {
         Dynamic dynamic = servletContext.addServlet("dispatcher", new DispatcherServlet(ctx));  
         dynamic.addMapping("/");
         servletContext.addListener(new ContextLoaderListener(ctx));
-        servletContext.addFilter("springSecurityFilterChain",new DelegatingFilterProxy("springSecurityFilterChain")).addMappingForUrlPatterns(null,false,"/*");
-        dynamic.setLoadOnStartup(1);  
-   }  
+        servletContext.addFilter("springSecurityFilterChain", new DelegatingFilterProxy("springSecurityFilterChain"))
+                .addMappingForUrlPatterns(null, false, "/*");
+        dynamic.setLoadOnStartup(1);
+    }
 }

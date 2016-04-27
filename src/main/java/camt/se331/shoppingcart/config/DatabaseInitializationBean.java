@@ -4,6 +4,7 @@ import camt.se331.shoppingcart.dao.ShoppingCartDao;
 import camt.se331.shoppingcart.entity.*;
 import camt.se331.shoppingcart.repository.ProductRepository;
 import camt.se331.shoppingcart.repository.ShoppingCartRepository;
+import camt.se331.shoppingcart.repository.UserRepository;
 import camt.se331.shoppingcart.service.ImageUtil;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,19 +23,22 @@ public class DatabaseInitializationBean implements InitializingBean {
     ProductRepository productRepository;
     @Autowired
     ShoppingCartRepository shoppingCartRepository;
+
+    @Autowired
+    UserRepository userRepository;
     @Override
     public void afterPropertiesSet() throws Exception {
-        Product[] initProduct =  {
-                new Product(1l,"Kindle","the good book reader",6900.00, ImageUtil.resizeImage(ImageUtil.getImage("pic/x.png"),200)),
-                new Product(2l,"Surface Pro","The unknow computer",34000.00,ImageUtil.getImage("pic/x.png")),
-                new Product(3l,"Mac pro"," Mac book interim",44000.00,ImageUtil.getImage("pic/x.png")),
-                new Product(4l,"Candle","use for lightenup the world",10.00,ImageUtil.getImage("pic/x.png")),
-                new Product(5l,"Bin","User for what ?",200.00,ImageUtil.getImage("pic/x.png")),
-                new Product(6l,"Telephone", "Call the others",150.00,ImageUtil.getImage("pic/x.png")),
-                new Product(7l,"iPhone","What is it?",26000.00,ImageUtil.getImage("pic/x.png")),
-                new Product(8l,"Galaxy Note 4","Who still use this ?",24000.00,ImageUtil.getImage("pic/x.png")),
-                new Product(9l,"AngularJS","we hate it",2000.00,ImageUtil.getImage("pic/x.png")),
-                new Product(10l,"Mazda 3","Very handsome guy use this",300000.00,ImageUtil.getImage("pic/x.png"))
+        Product[] initProduct = {
+                new Product(1l, "Kindle", "the good book reader", 6900.00, ImageUtil.resizeImage(ImageUtil.getImage("pic/x.png"), 200)),
+                new Product(2l, "Surface Pro", "The unknow computer", 34000.00, ImageUtil.getImage("pic/x.png")),
+                new Product(3l, "Mac pro", " Mac book interim", 44000.00, ImageUtil.getImage("pic/x.png")),
+                new Product(4l, "Candle", "use for lightenup the world", 10.00, ImageUtil.getImage("pic/x.png")),
+                new Product(5l, "Bin", "User for what ?", 200.00, ImageUtil.getImage("pic/x.png")),
+                new Product(6l, "Telephone", "Call the others", 150.00, ImageUtil.getImage("pic/x.png")),
+                new Product(7l, "iPhone", "What is it?", 26000.00, ImageUtil.getImage("pic/x.png")),
+                new Product(8l, "Galaxy Note 4", "Who still use this ?", 24000.00, ImageUtil.getImage("pic/x.png")),
+                new Product(9l, "AngularJS", "we hate it", 2000.00, ImageUtil.getImage("pic/x.png")),
+                new Product(10l, "Mazda 3", "Very handsome guy use this", 300000.00, ImageUtil.getImage("pic/x.png"))
         };
         productRepository.save(Arrays.asList(initProduct));
 
@@ -47,35 +51,51 @@ public class DatabaseInitializationBean implements InitializingBean {
                 new SelectedProduct(initProduct[1], 1),
         };
         selectedProducts.addAll(Arrays.asList(initSelectedProduct));
-        Calendar calendar = new GregorianCalendar(2015,4,7);
+        Calendar calendar = new GregorianCalendar(2015, 4, 7);
         shoppingCart.setSelectedProducts(selectedProducts);
         shoppingCart.setPurchaseDate(calendar.getTime());
         shoppingCart.setId(1L);
         shoppingCartRepository.save(shoppingCart);
+
+        // add user
+        Role adminRole = new Role("admin");
+        Role userRole = new Role("user");
+        Role ForeignUserRole = new Role("ForeignUser");
+
+
+        User admin = new User();
+        admin.setName("admin");
+        admin.setUsername("admin");
+        admin.setEmail("admin@yahoo.com");
+        admin.setPassword("123456");
+        Set<Role> roles = new HashSet<>();
+        roles.add(adminRole);
+        admin.setRoles(roles);
+
+        User user = new User();
+        user.setName("user");
+        user.setUsername("user");
+        user.setEmail("user@yahoo.com");
+        user.setPassword("123456");
+        Set<Role> roles2 = new HashSet<>();
+        roles2.add(userRole);
+        user.setRoles(roles2);
+        userRepository.save(admin);
+        userRepository.save(user);
+        admin.setRoles(roles);
+        user.setRoles(roles2);
+
+        User ForeignUser = new User();
+        ForeignUser.setName("ForeignUser");
+        ForeignUser.setUsername("ForeignUser");
+        ForeignUser.setEmail("user@yahoo.com");
+        ForeignUser.setPassword("123456");
+        Set<Role> roles3 = new HashSet<>();
+        roles3.add(ForeignUserRole);
+        ForeignUser.setRoles(roles3);
+
+        userRepository.save(ForeignUser);
+        admin.setRoles(roles);
+        ForeignUser.setRoles(roles3);
     }
-
-    /*Role adminRole = new Role("admin");
-    Role userRole = new Role("user");
-
-    User admin = new User();
-    admin.setName("admin");
-    admin.setUsername("admin");
-    admin.setEmail("admin@yahoo.com");
-    admin.setPassword("123456");
-    Set<Role> roles = new HashSet<>();
-    roles.add(adminRole);
-    admin.setRoles(roles);
-
-    User user = new User();
-    user.setName("user");
-    user.setUsername("user");
-    user.setEmail("user@yahoo.com");
-    user.setPassword("123456");
-    Set<Role> roles2 = new HashSet<>();
-    roles2.add(userRole);
-    user.setRoles(roles2);
-    userRepository.save(admin);
-    userRepository.save(user);
-    admin.setRoles(roles);
-    user.setRoles(roles2);*/
 }

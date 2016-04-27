@@ -17,15 +17,18 @@
     var removeErrorMsg = $rootScope.$on('$viewContentLoaded',function(){
       delete $rootScope.error;
     });
-    removeErrorMsg();
+      removeErrorMsg();
 
-    $rootScope.hasRole = function(role){
+
+    $rootScope.hasRole = function(role) {
       if ($rootScope.user == undefined){
         return false;
       }
-      if($rootScope.user.roles[role] == undefined){
+
+      if ($rootScope.user.roles[role] == undefined){
         return false;
       }
+
       return $rootScope.user.roles[role];
     }
 
@@ -35,11 +38,13 @@
       $cookies.remove('authToken');
       $location.path("/listProduct")
     }
+
+    /* Try getting valid user from cookie or go to login page */
     var originalPath = $location.path();
     $location.path("/listProduct");
     var authToken = $cookies.get('authToken');
     if (authToken != undefined){
-      $rootScope.authToken=authToken;
+      $rootScope.authToken = authToken;
       UserService.get(function(user){
         $rootScope.user = user;
         $location.path(originalPath);
@@ -47,5 +52,4 @@
     }
     $rootScope.initialized = true;
   }
-
 })();

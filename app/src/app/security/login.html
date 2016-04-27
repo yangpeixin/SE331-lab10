@@ -1,13 +1,13 @@
-<div class="col-md-9 col-offset-4" ng-controller="'LoginController as login">
+<div class="col-md-9 col-md-offset-4" ng-controller="LoginController as login">
   <form class="form-inline" ng-hide="user">
-    <div class="form-group">
+    <div class="form-group ">
       <label for="username" class="col-sm-3 control-label">User Name:</label>
-      <div class="col-am-3">
+      <div class="col-sm-3">
         <input id="username" ng-model="login.username" type="text" class="form-control"/>
       </div>
     </div>
     <div class="form-group">
-      <label for="password" class="col-sm-3 control-label">Password:00</label>
+      <label for="password" class="col-sm-3 control-label">Password:</label>
       <div class="col-sm-3">
         <input id="password" ng-model="login.password" type="password" class="form-control"/>
       </div>
@@ -21,22 +21,21 @@
       <div class="col-sm-offset-9 col-sm-9">
         <div class="checkbox">
           <label>
-            <input type="checkbox" ng-model="login.rememberMe">Remember Me
+            <input type="checkbox" ng-model="login.rememberMe"> Remember me
           </label>
         </div>
       </div>
     </div>
   </form>
-
   <form class="form-inline" ng-show="user">
     <div class="H6 col-sm-5 col-sm-offset-3 text-right">
-      Hello!!!{{user.name}}
+      Hello !!! {{user.name}}
     </div>
-    <div lang="form-group">
-      <div class="col-sm-3">
-        <input type="submit" value="Lod Out" class="btn btn-primary" ng-click="logout()"/>
+    <div class="form-group">
+      <div class="col-sm-3 ">
+        <input type="submit" value="Log Out" class="btn btn-primary" ng-click="logout()"/>
       </div>
     </div>
-  </form>
 
+  </form>
 </div>

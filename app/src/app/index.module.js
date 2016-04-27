@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -6,8 +6,7 @@
       'ngResource',
       'pascalprecht.translate',
       'flow',
-      'ngResource+apiPrefix',
-      'cgBusy',
+      'ngResource+apiPrefix', 'cgBusy',
       'ngCookies']);
 
 })();

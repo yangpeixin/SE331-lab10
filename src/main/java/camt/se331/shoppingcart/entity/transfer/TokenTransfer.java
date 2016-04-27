@@ -1,17 +1,20 @@
 package camt.se331.shoppingcart.entity.transfer;
 
 /**
- * Created by Arthur on 2016/4/19.
+ * Created by Dto on 4/20/2015.
  */
 public class TokenTransfer {
     private final String token;
 
-    public TokenTransfer(String token) {
+
+    public TokenTransfer(String token)
+    {
         this.token = token;
     }
 
-    public String getToken(){
+
+    public String getToken()
+    {
         return this.token;
     }
 }
-
